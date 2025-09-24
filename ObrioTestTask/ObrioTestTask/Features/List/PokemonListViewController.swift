@@ -220,10 +220,7 @@ extension PokemonListViewController: UITableViewDelegate {
         tableView.deselectRow(at: indexPath, animated: true)
         let item = currentState.items[indexPath.row]
         let detailState = PokemonDetailState(id: item.id, name: item.name)
-        let container = DependencyInjectionContainer.shared
-        let service = container.resolve(PokemonServiceProtocol.self)
-        let favorites = container.resolve(FavoritesManaging.self)
-        let detailReducer = PokemonDetailReducer(pokemonService: service, favoritesManager: favorites)
+        let detailReducer = PokemonDetailReducer()
         let detailStore = Store(initialState: detailState, reducer: detailReducer)
         let detailController = PokemonDetailViewController(store: detailStore, imageURL: item.spriteURL)
         navigationController?.pushViewController(detailController, animated: true)

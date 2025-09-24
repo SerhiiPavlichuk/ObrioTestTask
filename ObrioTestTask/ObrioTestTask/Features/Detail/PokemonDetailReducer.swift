@@ -21,13 +21,9 @@ struct PokemonDetailReducer: ReducerProtocol {
     typealias Action = PokemonDetailAction
     typealias Middleware = PokemonDetailMiddleware
 
-    private let pokemonService: PokemonServiceProtocol
-    private let favoritesManager: FavoritesManaging
+    @Inject private var pokemonService: PokemonServiceProtocol
+    @Inject private var favoritesManager: FavoritesManaging
 
-    init(pokemonService: PokemonServiceProtocol, favoritesManager: FavoritesManaging) {
-        self.pokemonService = pokemonService
-        self.favoritesManager = favoritesManager
-    }
 
     func reduce(state: PokemonDetailState, action: PokemonDetailAction) -> (PokemonDetailState, PokemonDetailMiddleware?) {
         var state = state
