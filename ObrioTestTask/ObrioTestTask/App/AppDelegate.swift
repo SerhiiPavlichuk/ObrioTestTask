@@ -12,8 +12,8 @@ import CoreData
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        setupDependencies()
         return true
     }
 
@@ -58,3 +58,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 }
 
+// MARK: - Dependency Injection
+
+private extension AppDelegate {
+    func setupDependencies() {
+        let container = DependencyInjectionContainer.shared
+
+        let cache = ImageCache(capacity: 20)
+        let imageLoader = ImageLoader(cache: cache)
+        let favoritesManager = FavoritesManager()
+
+        container.register(cache as ImageCache)
+        container.register(imageLoader as ImageLoading)
+        container.register(favoritesManager as FavoritesManaging)
+        container.register(PokemonService() as PokemonServiceProtocol)
+    }
+}
