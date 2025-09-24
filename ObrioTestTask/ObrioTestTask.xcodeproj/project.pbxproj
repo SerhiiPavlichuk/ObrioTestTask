@@ -6,30 +6,43 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		C54C0DAC2E84557800DBF1C4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C54C0DA12E84557800DBF1C4 /* Assets.xcassets */; };
+		C54C0DAE2E84557800DBF1C4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C54C0DA42E84557800DBF1C4 /* LaunchScreen.storyboard */; };
+		C54C0DB02E84557800DBF1C4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54C0DA02E84557800DBF1C4 /* AppDelegate.swift */; };
+		C54C0DB12E84557800DBF1C4 /* ObrioTestTask.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C54C0DA72E84557800DBF1C4 /* ObrioTestTask.xcdatamodeld */; };
+		C54C0DB22E84557800DBF1C4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54C0DA82E84557800DBF1C4 /* SceneDelegate.swift */; };
+		C54C0DE52E8455F600DBF1C4 /* LogLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54C0DE42E8455F600DBF1C4 /* LogLevel.swift */; };
+		C54C0DE92E84561600DBF1C4 /* Buildable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54C0DE82E84561600DBF1C4 /* Buildable.swift */; };
+		C54C0DEB2E84561F00DBF1C4 /* BaseViewBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54C0DEA2E84561F00DBF1C4 /* BaseViewBuilder.swift */; };
+		C54C0DED2E84565000DBF1C4 /* ViewBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54C0DEC2E84565000DBF1C4 /* ViewBuilder.swift */; };
+		C54C0DEF2E84566F00DBF1C4 /* LabelBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54C0DEE2E84566F00DBF1C4 /* LabelBuilder.swift */; };
+		C54C0DF12E84569200DBF1C4 /* ImageViewBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54C0DF02E84569200DBF1C4 /* ImageViewBuilder.swift */; };
+		C54C0DF32E8456A700DBF1C4 /* ButtonBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54C0DF22E8456A700DBF1C4 /* ButtonBuilder.swift */; };
+		C54C0DF62E8456E400DBF1C4 /* Inject.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54C0DF52E8456E400DBF1C4 /* Inject.swift */; };
+		C54C0DF82E84570900DBF1C4 /* UIVIew+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54C0DF72E84570300DBF1C4 /* UIVIew+Extension.swift */; };
+		C54C0DFC2E84578900DBF1C4 /* MiddlewareProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54C0DFB2E84578900DBF1C4 /* MiddlewareProtocol.swift */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		C54C0D852E84554300DBF1C4 /* ObrioTestTask.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ObrioTestTask.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C54C0DA02E84557800DBF1C4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		C54C0DA12E84557800DBF1C4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		C54C0DA22E84557800DBF1C4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C54C0DA32E84557800DBF1C4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		C54C0DA82E84557800DBF1C4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		C54C0DAB2E84557800DBF1C4 /* ObrioTestTask.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ObrioTestTask.xcdatamodel; sourceTree = "<group>"; };
+		C54C0DE42E8455F600DBF1C4 /* LogLevel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogLevel.swift; sourceTree = "<group>"; };
+		C54C0DE82E84561600DBF1C4 /* Buildable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Buildable.swift; sourceTree = "<group>"; };
+		C54C0DEA2E84561F00DBF1C4 /* BaseViewBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewBuilder.swift; sourceTree = "<group>"; };
+		C54C0DEC2E84565000DBF1C4 /* ViewBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewBuilder.swift; sourceTree = "<group>"; };
+		C54C0DEE2E84566F00DBF1C4 /* LabelBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelBuilder.swift; sourceTree = "<group>"; };
+		C54C0DF02E84569200DBF1C4 /* ImageViewBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewBuilder.swift; sourceTree = "<group>"; };
+		C54C0DF22E8456A700DBF1C4 /* ButtonBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonBuilder.swift; sourceTree = "<group>"; };
+		C54C0DF52E8456E400DBF1C4 /* Inject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Inject.swift; sourceTree = "<group>"; };
+		C54C0DF72E84570300DBF1C4 /* UIVIew+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIVIew+Extension.swift"; sourceTree = "<group>"; };
+		C54C0DFB2E84578900DBF1C4 /* MiddlewareProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiddlewareProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
-
-/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		C54C0D9A2E84554500DBF1C4 /* Exceptions for "ObrioTestTask" folder in "ObrioTestTask" target */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				Info.plist,
-			);
-			target = C54C0D842E84554300DBF1C4 /* ObrioTestTask */;
-		};
-/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
-
-/* Begin PBXFileSystemSynchronizedRootGroup section */
-		C54C0D872E84554300DBF1C4 /* ObrioTestTask */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			exceptions = (
-				C54C0D9A2E84554500DBF1C4 /* Exceptions for "ObrioTestTask" folder in "ObrioTestTask" target */,
-			);
-			path = ObrioTestTask;
-			sourceTree = "<group>";
-		};
-/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		C54C0D822E84554300DBF1C4 /* Frameworks */ = {
@@ -45,7 +58,7 @@
 		C54C0D7C2E84554300DBF1C4 = {
 			isa = PBXGroup;
 			children = (
-				C54C0D872E84554300DBF1C4 /* ObrioTestTask */,
+				C54C0DAA2E84557800DBF1C4 /* ObrioTestTask */,
 				C54C0D862E84554300DBF1C4 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -56,6 +69,85 @@
 				C54C0D852E84554300DBF1C4 /* ObrioTestTask.app */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		C54C0DAA2E84557800DBF1C4 /* ObrioTestTask */ = {
+			isa = PBXGroup;
+			children = (
+				C54C0DFA2E84578400DBF1C4 /* Store */,
+				C54C0DF92E84574500DBF1C4 /* Resourses */,
+				C54C0DF42E8456E200DBF1C4 /* DI */,
+				C54C0DE72E84560400DBF1C4 /* Builders */,
+				C54C0DE62E8455FE00DBF1C4 /* Extensions */,
+				C54C0DE32E8455F300DBF1C4 /* Helpers */,
+				C54C0DB42E8455A000DBF1C4 /* App */,
+				C54C0DA22E84557800DBF1C4 /* Info.plist */,
+				C54C0DA72E84557800DBF1C4 /* ObrioTestTask.xcdatamodeld */,
+			);
+			path = ObrioTestTask;
+			sourceTree = "<group>";
+		};
+		C54C0DB42E8455A000DBF1C4 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				C54C0DA02E84557800DBF1C4 /* AppDelegate.swift */,
+				C54C0DA82E84557800DBF1C4 /* SceneDelegate.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		C54C0DE32E8455F300DBF1C4 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				C54C0DE42E8455F600DBF1C4 /* LogLevel.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		C54C0DE62E8455FE00DBF1C4 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				C54C0DF72E84570300DBF1C4 /* UIVIew+Extension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		C54C0DE72E84560400DBF1C4 /* Builders */ = {
+			isa = PBXGroup;
+			children = (
+				C54C0DF22E8456A700DBF1C4 /* ButtonBuilder.swift */,
+				C54C0DF02E84569200DBF1C4 /* ImageViewBuilder.swift */,
+				C54C0DEE2E84566F00DBF1C4 /* LabelBuilder.swift */,
+				C54C0DEC2E84565000DBF1C4 /* ViewBuilder.swift */,
+				C54C0DEA2E84561F00DBF1C4 /* BaseViewBuilder.swift */,
+				C54C0DE82E84561600DBF1C4 /* Buildable.swift */,
+			);
+			path = Builders;
+			sourceTree = "<group>";
+		};
+		C54C0DF42E8456E200DBF1C4 /* DI */ = {
+			isa = PBXGroup;
+			children = (
+				C54C0DF52E8456E400DBF1C4 /* Inject.swift */,
+			);
+			path = DI;
+			sourceTree = "<group>";
+		};
+		C54C0DF92E84574500DBF1C4 /* Resourses */ = {
+			isa = PBXGroup;
+			children = (
+				C54C0DA12E84557800DBF1C4 /* Assets.xcassets */,
+				C54C0DA42E84557800DBF1C4 /* LaunchScreen.storyboard */,
+			);
+			path = Resourses;
+			sourceTree = "<group>";
+		};
+		C54C0DFA2E84578400DBF1C4 /* Store */ = {
+			isa = PBXGroup;
+			children = (
+				C54C0DFB2E84578900DBF1C4 /* MiddlewareProtocol.swift */,
+			);
+			path = Store;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -72,9 +164,6 @@
 			buildRules = (
 			);
 			dependencies = (
-			);
-			fileSystemSynchronizedGroups = (
-				C54C0D872E84554300DBF1C4 /* ObrioTestTask */,
 			);
 			name = ObrioTestTask;
 			packageProductDependencies = (
@@ -122,6 +211,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C54C0DAC2E84557800DBF1C4 /* Assets.xcassets in Resources */,
+				C54C0DAE2E84557800DBF1C4 /* LaunchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -132,10 +223,34 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C54C0DB02E84557800DBF1C4 /* AppDelegate.swift in Sources */,
+				C54C0DB12E84557800DBF1C4 /* ObrioTestTask.xcdatamodeld in Sources */,
+				C54C0DF82E84570900DBF1C4 /* UIVIew+Extension.swift in Sources */,
+				C54C0DB22E84557800DBF1C4 /* SceneDelegate.swift in Sources */,
+				C54C0DE92E84561600DBF1C4 /* Buildable.swift in Sources */,
+				C54C0DF12E84569200DBF1C4 /* ImageViewBuilder.swift in Sources */,
+				C54C0DEF2E84566F00DBF1C4 /* LabelBuilder.swift in Sources */,
+				C54C0DFC2E84578900DBF1C4 /* MiddlewareProtocol.swift in Sources */,
+				C54C0DF62E8456E400DBF1C4 /* Inject.swift in Sources */,
+				C54C0DE52E8455F600DBF1C4 /* LogLevel.swift in Sources */,
+				C54C0DF32E8456A700DBF1C4 /* ButtonBuilder.swift in Sources */,
+				C54C0DEB2E84561F00DBF1C4 /* BaseViewBuilder.swift in Sources */,
+				C54C0DED2E84565000DBF1C4 /* ViewBuilder.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		C54C0DA42E84557800DBF1C4 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C54C0DA32E84557800DBF1C4 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		C54C0D9C2E84554500DBF1C4 /* Debug */ = {
@@ -149,9 +264,10 @@
 				INFOPLIST_FILE = ObrioTestTask/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIMainStoryboardFile = "";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -160,12 +276,16 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.icloud.s.pavlichuk.ObrioTestTask;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
 				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -180,9 +300,10 @@
 				INFOPLIST_FILE = ObrioTestTask/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIMainStoryboardFile = "";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -191,12 +312,16 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.icloud.s.pavlichuk.ObrioTestTask;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
 				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -341,6 +466,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		C54C0DA72E84557800DBF1C4 /* ObrioTestTask.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				C54C0DAB2E84557800DBF1C4 /* ObrioTestTask.xcdatamodel */,
+			);
+			currentVersion = C54C0DAB2E84557800DBF1C4 /* ObrioTestTask.xcdatamodel */;
+			path = ObrioTestTask.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = C54C0D7D2E84554300DBF1C4 /* Project object */;
 }
