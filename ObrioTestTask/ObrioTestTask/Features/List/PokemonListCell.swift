@@ -9,15 +9,38 @@ import UIKit
 
 final class PokemonListCell: UITableViewCell {
 
+    static let reuseIdentifier = "PokemonListCell"
+
     var onFavoriteTap: (() -> Void)?
     var onDeleteTap: (() -> Void)?
 
-    private let containerView = UIView()
-    private let pokemonImageView = UIImageView()
-    private let nameLabel = UILabel()
-    private let idLabel = UILabel()
-    private let favoriteButton = UIButton(type: .system)
-    private let deleteButton = UIButton(type: .system)
+    private let containerView: UIView = ViewBuilder()
+        .backgroundColor(.secondarySystemBackground)
+        .cornerRadius(12)
+        .clipsToBounds()
+        .build()
+
+    private let pokemonImageView: UIImageView = ImageViewBuilder()
+        .contentMode(.scaleAspectFit)
+        .clipsToBounds()
+        .build()
+
+    private let nameLabel: UILabel = LabelBuilder()
+        .font(UIFont.preferredFont(forTextStyle: .headline))
+        .textColor(.label)
+        .build()
+
+    private let idLabel: UILabel = LabelBuilder()
+        .font(UIFont.preferredFont(forTextStyle: .subheadline))
+        .textColor(.secondaryLabel)
+        .build()
+
+    private let favoriteButton: UIButton = ButtonBuilder(.system)
+        .build()
+
+    private let deleteButton: UIButton = ButtonBuilder(.system)
+        .build()
+
     private let activityIndicator = UIActivityIndicatorView(style: .medium)
 
     private var imageTask: Task<Void, Never>?
@@ -68,30 +91,11 @@ private extension PokemonListCell {
         selectionStyle = .none
         contentView.backgroundColor = .systemBackground
 
-        containerView.translatesAutoresizingMaskIntoConstraints = false
-        containerView.backgroundColor = .secondarySystemBackground
-        containerView.layer.cornerRadius = 12
-        containerView.layer.masksToBounds = true
-
-        pokemonImageView.translatesAutoresizingMaskIntoConstraints = false
-        pokemonImageView.contentMode = .scaleAspectFit
-        pokemonImageView.clipsToBounds = true
-
-        nameLabel.translatesAutoresizingMaskIntoConstraints = false
-        nameLabel.font = UIFont.preferredFont(forTextStyle: .headline)
-        nameLabel.textColor = .label
-
-        idLabel.translatesAutoresizingMaskIntoConstraints = false
-        idLabel.font = UIFont.preferredFont(forTextStyle: .subheadline)
-        idLabel.textColor = .secondaryLabel
-
-        favoriteButton.translatesAutoresizingMaskIntoConstraints = false
         favoriteButton.setImage(UIImage(systemName: "star"), for: .normal)
         favoriteButton.setImage(UIImage(systemName: "star.fill"), for: .selected)
         favoriteButton.tintColor = .systemYellow
         favoriteButton.addTarget(self, action: #selector(favoriteTapped), for: .touchUpInside)
 
-        deleteButton.translatesAutoresizingMaskIntoConstraints = false
         deleteButton.setImage(UIImage(systemName: "trash"), for: .normal)
         deleteButton.tintColor = .systemRed
         deleteButton.addTarget(self, action: #selector(deleteTapped), for: .touchUpInside)
@@ -99,13 +103,9 @@ private extension PokemonListCell {
         activityIndicator.translatesAutoresizingMaskIntoConstraints = false
         activityIndicator.hidesWhenStopped = true
 
-        contentView.addSubview(containerView)
-        containerView.addSubview(pokemonImageView)
-        containerView.addSubview(nameLabel)
-        containerView.addSubview(idLabel)
-        containerView.addSubview(favoriteButton)
-        containerView.addSubview(deleteButton)
-        pokemonImageView.addSubview(activityIndicator)
+        contentView.addSubviews(containerView)
+        containerView.addSubviews(pokemonImageView, nameLabel, idLabel, favoriteButton, deleteButton)
+        pokemonImageView.addSubviews(activityIndicator)
 
         NSLayoutConstraint.activate([
             containerView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 8),

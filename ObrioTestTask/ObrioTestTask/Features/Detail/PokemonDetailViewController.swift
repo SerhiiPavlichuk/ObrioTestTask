@@ -17,12 +17,28 @@ final class PokemonDetailViewController: UIViewController {
     private var currentState: PokemonDetailState
 
     private let scrollView = UIScrollView()
-    private let contentView = UIView()
-    private let imageView = UIImageView()
-    private let nameLabel = UILabel()
-    private let heightLabel = UILabel()
-    private let weightLabel = UILabel()
-    private let favoriteButton = UIButton(type: .system)
+    private let contentView: UIView = ViewBuilder().build()
+    private let imageView: UIImageView = ImageViewBuilder()
+        .contentMode(.scaleAspectFit)
+        .clipsToBounds()
+        .cornerRadius(16)
+        .backgroundColor(.secondarySystemBackground)
+        .build()
+    private let nameLabel: UILabel = LabelBuilder()
+        .font(UIFont.preferredFont(forTextStyle: .largeTitle))
+        .textColor(.label)
+        .alignment(.center)
+        .build()
+    private let heightLabel: UILabel = LabelBuilder()
+        .font(UIFont.preferredFont(forTextStyle: .title3))
+        .textColor(.secondaryLabel)
+        .build()
+    private let weightLabel: UILabel = LabelBuilder()
+        .font(UIFont.preferredFont(forTextStyle: .title3))
+        .textColor(.secondaryLabel)
+        .build()
+    private let favoriteButton: UIButton = ButtonBuilder(.system)
+        .build()
     private let activityIndicator = UIActivityIndicatorView(style: .large)
     private let detailActivityIndicator = UIActivityIndicatorView(style: .medium)
 
@@ -60,27 +76,6 @@ private extension PokemonDetailViewController {
         title = currentState.name
 
         scrollView.translatesAutoresizingMaskIntoConstraints = false
-        contentView.translatesAutoresizingMaskIntoConstraints = false
-
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.contentMode = .scaleAspectFit
-        imageView.clipsToBounds = true
-        imageView.layer.cornerRadius = 16
-        imageView.backgroundColor = .secondarySystemBackground
-
-        nameLabel.translatesAutoresizingMaskIntoConstraints = false
-        nameLabel.font = UIFont.preferredFont(forTextStyle: .largeTitle)
-        nameLabel.textColor = .label
-        nameLabel.textAlignment = .center
-
-        heightLabel.translatesAutoresizingMaskIntoConstraints = false
-        weightLabel.translatesAutoresizingMaskIntoConstraints = false
-        [heightLabel, weightLabel].forEach {
-            $0.font = UIFont.preferredFont(forTextStyle: .title3)
-            $0.textColor = .secondaryLabel
-        }
-
-        favoriteButton.translatesAutoresizingMaskIntoConstraints = false
         favoriteButton.setTitle("Add to Favorites", for: .normal)
         favoriteButton.setTitle("Remove Favorite", for: .selected)
         favoriteButton.configuration = .filled()
@@ -99,15 +94,9 @@ private extension PokemonDetailViewController {
         detailActivityIndicator.translatesAutoresizingMaskIntoConstraints = false
         detailActivityIndicator.hidesWhenStopped = true
 
-        view.addSubview(scrollView)
-        scrollView.addSubview(contentView)
-        contentView.addSubview(imageView)
-        contentView.addSubview(detailActivityIndicator)
-        contentView.addSubview(nameLabel)
-        contentView.addSubview(heightLabel)
-        contentView.addSubview(weightLabel)
-        contentView.addSubview(favoriteButton)
-        view.addSubview(activityIndicator)
+        view.addSubviews(scrollView, activityIndicator)
+        scrollView.addSubviews(contentView)
+        contentView.addSubviews(imageView, detailActivityIndicator, nameLabel, heightLabel, weightLabel, favoriteButton)
 
         NSLayoutConstraint.activate([
             scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),

@@ -18,7 +18,7 @@ final class PokemonListViewController: UIViewController {
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .plain)
         tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.register(PokemonListCell.self, forCellReuseIdentifier: String(describing: PokemonListCell.self))
+        tableView.register(PokemonListCell.self, forCellReuseIdentifier: PokemonListCell.reuseIdentifier)
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 96
         tableView.separatorStyle = .none
@@ -41,12 +41,12 @@ final class PokemonListViewController: UIViewController {
     }()
 
     private let emptyStateLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont.preferredFont(forTextStyle: .headline)
-        label.textColor = .secondaryLabel
-        label.textAlignment = .center
-        label.text = "No Pokémon yet"
+        let label = LabelBuilder()
+            .font(UIFont.preferredFont(forTextStyle: .headline))
+            .textColor(.secondaryLabel)
+            .alignment(.center)
+            .text("No Pokémon yet")
+            .build()
         label.isHidden = true
         return label
     }()
@@ -58,11 +58,12 @@ final class PokemonListViewController: UIViewController {
     }()
 
     private let favoritesCounterLabel: UILabel = {
-        let label = UILabel()
-        label.font = UIFont.preferredFont(forTextStyle: .caption1)
-        label.textColor = .white
+        let label = LabelBuilder()
+            .font(UIFont.preferredFont(forTextStyle: .caption1))
+            .textColor(.white)
+            .alignment(.center)
+            .build()
         label.backgroundColor = .systemRed
-        label.textAlignment = .center
         label.layer.cornerRadius = 10
         label.layer.masksToBounds = true
         label.widthAnchor.constraint(greaterThanOrEqualToConstant: 20).isActive = true
@@ -99,9 +100,7 @@ private extension PokemonListViewController {
 
         navigationItem.rightBarButtonItem = makeFavoritesBarButton()
 
-        view.addSubview(tableView)
-        view.addSubview(loadingIndicator)
-        view.addSubview(emptyStateLabel)
+        view.addSubviews(tableView, loadingIndicator, emptyStateLabel)
         refreshControl.addTarget(self, action: #selector(refreshPulled), for: .valueChanged)
 
         paginationIndicator.frame = CGRect(x: 0, y: 0, width: view.bounds.width, height: 44)
@@ -123,13 +122,13 @@ private extension PokemonListViewController {
 
     func makeFavoritesBarButton() -> UIBarButtonItem {
         let container = UIView(frame: CGRect(x: 0, y: 0, width: 44, height: 44))
-        let imageView = UIImageView(image: UIImage(systemName: "star.fill"))
-        imageView.tintColor = .systemYellow
-        imageView.translatesAutoresizingMaskIntoConstraints = false
+        let imageView = ImageViewBuilder()
+            .image(UIImage(systemName: "star.fill"))
+            .tintColor(.systemYellow)
+            .build()
         favoritesCounterLabel.translatesAutoresizingMaskIntoConstraints = false
 
-        container.addSubview(imageView)
-        container.addSubview(favoritesCounterLabel)
+        container.addSubviews(imageView, favoritesCounterLabel)
 
         NSLayoutConstraint.activate([
             imageView.centerXAnchor.constraint(equalTo: container.centerXAnchor),
@@ -198,7 +197,7 @@ extension PokemonListViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: PokemonListCell.self), for: indexPath) as? PokemonListCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: PokemonListCell.reuseIdentifier, for: indexPath) as? PokemonListCell else {
             return UITableViewCell()
         }
 
