@@ -9,12 +9,17 @@ import UIKit
 import Combine
 
 final class PokemonDetailViewController: UIViewController {
+    
+    //MARK: - Properteis
+    
     private let store: Store<PokemonDetailReducer>
     private let fallbackImageURL: URL?
     @Inject private var imageLoader: ImageLoading
 
     private var cancellables = Set<AnyCancellable>()
     private var currentState: PokemonDetailState
+    
+    //MARK: - Views
 
     private let scrollView = UIScrollView()
     private let contentView: UIView = ViewBuilder().build()
@@ -44,6 +49,8 @@ final class PokemonDetailViewController: UIViewController {
 
     private var imageTask: Task<Void, Never>?
     private var displayedImageURL: URL?
+    
+    //MARK: - Init
 
     init(store: Store<PokemonDetailReducer>, imageURL: URL?) {
         self.store = store
@@ -55,6 +62,8 @@ final class PokemonDetailViewController: UIViewController {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    //MARK: - Life cycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -69,6 +78,8 @@ final class PokemonDetailViewController: UIViewController {
         imageTask?.cancel()
     }
 }
+
+    //MARK: - Setup
 
 private extension PokemonDetailViewController {
     func setupUI() {

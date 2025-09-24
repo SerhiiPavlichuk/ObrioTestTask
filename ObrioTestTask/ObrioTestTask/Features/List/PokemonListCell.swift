@@ -9,11 +9,15 @@ import UIKit
 
 final class PokemonListCell: UITableViewCell {
 
+    //MARK: - Properties
+    
     static let reuseIdentifier = "PokemonListCell"
 
     var onFavoriteTap: (() -> Void)?
     var onDeleteTap: (() -> Void)?
 
+    //MARK: - Views
+    
     private let containerView: UIView = ViewBuilder()
         .backgroundColor(.secondarySystemBackground)
         .cornerRadius(12)
@@ -45,6 +49,8 @@ final class PokemonListCell: UITableViewCell {
 
     private var imageTask: Task<Void, Never>?
 
+    //MARK: - Init
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setup()
@@ -62,6 +68,8 @@ final class PokemonListCell: UITableViewCell {
         imageTask = nil
     }
 
+    //MARK: - Methods
+    
     func configure(with item: PokemonListItem, isFavorite: Bool, imageLoader: ImageLoading) {
         nameLabel.text = item.name
         idLabel.text = String(format: "#%03d", item.id)
@@ -85,6 +93,8 @@ final class PokemonListCell: UITableViewCell {
         }
     }
 }
+
+    //MARK: - Setup
 
 private extension PokemonListCell {
     func setup() {

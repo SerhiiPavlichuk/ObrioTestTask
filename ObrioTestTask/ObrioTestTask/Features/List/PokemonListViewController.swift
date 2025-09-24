@@ -9,11 +9,16 @@ import UIKit
 import Combine
 
 final class PokemonListViewController: UIViewController {
+    
+    //MARK: - Properties
+    
     private let store: Store<PokemonListReducer>
     @Inject private var imageLoader: ImageLoading
 
     private var cancellables = Set<AnyCancellable>()
     private var currentState = PokemonListState()
+    
+    //MARK: - Views
 
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .plain)
@@ -69,6 +74,8 @@ final class PokemonListViewController: UIViewController {
         label.widthAnchor.constraint(greaterThanOrEqualToConstant: 20).isActive = true
         return label
     }()
+    
+    //MARK: - Init
 
     init(store: Store<PokemonListReducer>) {
         self.store = store
@@ -78,6 +85,8 @@ final class PokemonListViewController: UIViewController {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    //MARK: - Life cycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -92,6 +101,8 @@ final class PokemonListViewController: UIViewController {
         paginationIndicator.frame.size.width = tableView.bounds.width
     }
 }
+
+    //MARK: - Setup
 
 private extension PokemonListViewController {
     func setupUI() {
@@ -133,8 +144,8 @@ private extension PokemonListViewController {
         NSLayoutConstraint.activate([
             imageView.centerXAnchor.constraint(equalTo: container.centerXAnchor),
             imageView.centerYAnchor.constraint(equalTo: container.centerYAnchor),
-            favoritesCounterLabel.topAnchor.constraint(equalTo: container.topAnchor),
-            favoritesCounterLabel.trailingAnchor.constraint(equalTo: container.trailingAnchor),
+            favoritesCounterLabel.topAnchor.constraint(equalTo: container.topAnchor, constant: 8),
+            favoritesCounterLabel.trailingAnchor.constraint(equalTo: container.trailingAnchor, constant: -8),
             favoritesCounterLabel.heightAnchor.constraint(equalToConstant: 20)
         ])
 
@@ -152,6 +163,7 @@ private extension PokemonListViewController {
     }
 
     func render(_ state: PokemonListState) {
+        let previousState = currentState
         currentState = state
 
         state.isInitialLoading ? loadingIndicator.startAnimating() : loadingIndicator.stopAnimating()
@@ -166,7 +178,17 @@ private extension PokemonListViewController {
 
         state.isPaginating ? paginationIndicator.startAnimating() : paginationIndicator.stopAnimating()
 
-        tableView.reloadData()
+        if previousState.items != state.items {
+            tableView.reloadData()
+        } else if previousState.favorites != state.favorites {
+            let changedIds = previousState.favorites.symmetricDifference(state.favorites)
+            let indexPaths = state.items.enumerated().compactMap { index, item -> IndexPath? in
+                changedIds.contains(item.id) ? IndexPath(row: index, section: 0) : nil
+            }
+            if !indexPaths.isEmpty {
+                tableView.reloadRows(at: indexPaths, with: .none)
+            }
+        }
 
         if let message = state.errorMessage {
             presentError(message)
@@ -190,6 +212,8 @@ private extension PokemonListViewController {
         store.send(.refresh)
     }
 }
+
+    //MARK: - tableView
 
 extension PokemonListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

@@ -8,6 +8,7 @@
 import Foundation
 import Combine
 
+    
 enum PokemonListMiddleware: MiddlewareProtocol {
     case loadPage(service: PokemonServiceProtocol, offset: Int, limit: Int)
     case observeFavorites(manager: FavoritesManaging, skipCurrent: Bool)

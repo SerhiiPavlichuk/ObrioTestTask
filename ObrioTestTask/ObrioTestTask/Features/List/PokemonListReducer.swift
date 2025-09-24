@@ -28,7 +28,7 @@ struct PokemonListReducer: ReducerProtocol {
     @Inject private var pokemonService: PokemonServiceProtocol
     @Inject private var favoritesManager: FavoritesManaging
 
-    func reduce(state: PokemonListState, action: PokemonListAction) -> (PokemonListState, PokemonListMiddleware?) {
+    func reduce(state: State, action: Action) -> (State, Middleware?) {
         var state = state
 
         switch action {
@@ -37,7 +37,7 @@ struct PokemonListReducer: ReducerProtocol {
             state.hasLoadedInitialPage = true
             state.isInitialLoading = true
             state.errorMessage = nil
-            let middleware = PokemonListMiddleware.loadPage(
+            let middleware = Middleware.loadPage(
                 service: pokemonService,
                 offset: state.offset,
                 limit: state.pageLimit
@@ -49,7 +49,7 @@ struct PokemonListReducer: ReducerProtocol {
             state.isInitialLoading = true
             state.isPaginating = false
             state.errorMessage = nil
-            let middleware = PokemonListMiddleware.loadPage(
+            let middleware = Middleware.loadPage(
                 service: pokemonService,
                 offset: state.offset,
                 limit: state.pageLimit
@@ -62,7 +62,7 @@ struct PokemonListReducer: ReducerProtocol {
             }
             state.isPaginating = true
             state.errorMessage = nil
-            let middleware = PokemonListMiddleware.loadPage(
+            let middleware = Middleware.loadPage(
                 service: pokemonService,
                 offset: state.offset,
                 limit: state.pageLimit
@@ -93,21 +93,21 @@ struct PokemonListReducer: ReducerProtocol {
             }
 
         case let .toggleFavorite(id):
-            return (state, PokemonListMiddleware.toggleFavorite(manager: favoritesManager, id: id))
+            return (state, Middleware.toggleFavorite(manager: favoritesManager, id: id))
 
         case let .favoritesUpdated(favorites):
             state.favorites = favorites
-            return (state, PokemonListMiddleware.observeFavorites(manager: favoritesManager, skipCurrent: true))
+            return (state, Middleware.observeFavorites(manager: favoritesManager, skipCurrent: true))
 
         case .observeFavorites:
             guard !state.isObservingFavorites else { return (state, nil) }
             state.isObservingFavorites = true
             state.favorites = favoritesManager.currentFavorites()
-            return (state, PokemonListMiddleware.observeFavorites(manager: favoritesManager, skipCurrent: true))
+            return (state, Middleware.observeFavorites(manager: favoritesManager, skipCurrent: true))
 
         case let .delete(id):
             state.items.removeAll { $0.id == id }
-            return (state, PokemonListMiddleware.removeFavorite(manager: favoritesManager, id: id))
+            return (state, Middleware.removeFavorite(manager: favoritesManager, id: id))
 
         case .dismissError:
             state.errorMessage = nil

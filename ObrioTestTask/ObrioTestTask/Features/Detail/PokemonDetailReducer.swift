@@ -25,7 +25,7 @@ struct PokemonDetailReducer: ReducerProtocol {
     @Inject private var favoritesManager: FavoritesManaging
 
 
-    func reduce(state: PokemonDetailState, action: PokemonDetailAction) -> (PokemonDetailState, PokemonDetailMiddleware?) {
+    func reduce(state: State, action: Action) -> (State, Middleware?) {
         var state = state
 
         switch action {
@@ -33,7 +33,7 @@ struct PokemonDetailReducer: ReducerProtocol {
             guard !state.isLoading, state.detail == nil else { return (state, nil) }
             state.isLoading = true
             state.errorMessage = nil
-            let middleware = PokemonDetailMiddleware.loadDetail(
+            let middleware = Middleware.loadDetail(
                 service: pokemonService,
                 id: state.id
             )
@@ -50,24 +50,24 @@ struct PokemonDetailReducer: ReducerProtocol {
                     return (state, nil)
                 }
                 state.hasSubscribedToFavorites = true
-                return (state, PokemonDetailMiddleware.observeFavorites(manager: favoritesManager, skipCurrent: true))
+                return (state, Middleware.observeFavorites(manager: favoritesManager, skipCurrent: true))
             case let .failure(error):
                 state.errorMessage = error.localizedDescription
                 return (state, nil)
             }
 
         case .toggleFavorite:
-            return (state, PokemonDetailMiddleware.toggleFavorite(manager: favoritesManager, id: state.id))
+            return (state, Middleware.toggleFavorite(manager: favoritesManager, id: state.id))
 
         case let .favoritesUpdated(favorites):
             state.isFavorite = favorites.contains(state.id)
-            return (state, PokemonDetailMiddleware.observeFavorites(manager: favoritesManager, skipCurrent: true))
+            return (state, Middleware.observeFavorites(manager: favoritesManager, skipCurrent: true))
 
         case .observeFavorites:
             guard !state.hasSubscribedToFavorites else { return (state, nil) }
             state.hasSubscribedToFavorites = true
             state.isFavorite = favoritesManager.isFavorite(state.id)
-            return (state, PokemonDetailMiddleware.observeFavorites(manager: favoritesManager, skipCurrent: true))
+            return (state, Middleware.observeFavorites(manager: favoritesManager, skipCurrent: true))
 
         case .dismissError:
             state.errorMessage = nil
